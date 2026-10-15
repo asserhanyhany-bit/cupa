@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3eb">
+  <meta name="description" content="CUPA is a coffee-and-cake spot in Korba, Heliopolis, Cairo. Visit for dine-in or takeaway.">
+  <title>CUPA — Coffee & Cake in Korba</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%2355392c'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia' font-size='34' font-weight='bold' fill='%23f7f3eb'%3EC%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --cream: #f7f3eb;
+      --cream-deep: #eee6d9;
+      --paper: #fffdf9;
+      --espresso: #38251e;
+      --chocolate: #654637;
+      --cocoa: #80624e;
+      --sage: #72745a;
+      --muted: #746d65;
+      --line: rgba(56, 37, 30, .13);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --shadow: 0 22px 64px rgba(58, 38, 28, .12);
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    body { margin: 0; background: var(--cream); color: var(--espresso); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    body, button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    :focus-visible { outline: 3px solid #ad794d; outline-offset: 4px; }
+    .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .announcement { background: var(--espresso); color: #f9f3e9; font-size: 12px; letter-spacing: .07em; }
+    .announcement-inner { min-height: 35px; display: flex; align-items: center; justify-content: center; gap: 13px; text-align: center; }
+    .announcement .dot { width: 3px; height: 3px; border-radius: 50%; background: #c6a887; }
+    .site-header { position: sticky; top: 0; z-index: 20; background: rgba(247, 243, 235, .93); border-bottom: 1px solid rgba(56,37,30,.07); backdrop-filter: blur(14px); }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 76px; gap: 26px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--espresso); flex: 0 0 auto; }
+    .brand-mark { width: 35px; height: 35px; display: grid; place-items: center; border-radius: 12px 12px 12px 4px; background: var(--espresso); color: var(--cream); font: 700 22px/1 var(--serif); }
+    .brand-name { font: 700 21px/1 var(--sans); letter-spacing: .17em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(17px, 3vw, 36px); margin-inline-start: auto; }
+    .nav-links a { text-decoration: none; color: #5e5047; font-size: 13px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: #a3653e; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .language-toggle { min-width: 42px; height: 40px; padding: 0 10px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--espresso); font-size: 12px; font-weight: 700; cursor: pointer; }
+    .nav-call { text-decoration: none; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 12px 17px; background: var(--espresso); color: white; transition: background .2s, transform .2s; }
+    .nav-call:hover, .button-dark:hover { background: #53382d; transform: translateY(-1px); }
+    .hero { position: relative; overflow: hidden; padding: 70px 0 61px; }
+    .hero::before { content: ""; position: absolute; width: 430px; height: 430px; border: 1px solid rgba(101,70,55,.08); border-radius: 50%; inset-inline-end: -205px; top: -230px; box-shadow: 0 0 0 44px rgba(101,70,55,.018), 0 0 0 88px rgba(101,70,55,.015); pointer-events: none; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: .93fr 1.07fr; gap: clamp(50px, 8vw, 112px); align-items: center; }
+    .hero-copy { padding: 0 0 12px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .17em; font-size: 10px; line-height: 1.5; font-weight: 700; color: var(--sage); }
+    .eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 540px; margin: 21px 0 18px; font: 600 clamp(48px, 6.1vw, 78px)/1.03 var(--serif); letter-spacing: -.045em; }
+    .hero-copy > p { max-width: 415px; color: var(--muted); font-size: 16px; line-height: 1.8; margin-bottom: 27px; }
+    .button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 11px; }
+    .button { min-height: 48px; display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 0 19px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 12px; transition: transform .2s, background .2s, border-color .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-dark { color: #fff; background: var(--espresso); }
+    .button-outline { color: var(--espresso); border: 1px solid rgba(56,37,30,.22); background: transparent; }
+    .button-outline:hover { border-color: var(--chocolate); background: rgba(255,255,255,.45); }
+    .button svg, .text-link svg { width: 15px; height: 15px; flex: 0 0 auto; }
+    .hero-visual { min-height: 472px; position: relative; }
+    .hero-photo { position: absolute; overflow: hidden; border-radius: 180px 180px 14px 14px; background: #d7c1a5; }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo-main { inset: 0 34px 20px 44px; box-shadow: var(--shadow); }
+    .hero-photo-main img { object-position: center 35%; }
+    
+
+    .hero-stamp { position: absolute; inset-inline-end: -3px; bottom: 57px; display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1px solid rgba(56,37,30,.1); border-radius: 999px; background: var(--paper); box-shadow: 0 12px 30px rgba(58,38,28,.1); font-size: 11px; font-weight: 700; }
+    .hero-stamp .stamp-mark { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: #f8f1e6; background: var(--sage); font: 600 14px var(--serif); }
+    .hero-note { position: absolute; inset-inline-start: 2px; top: 29px; color: rgba(56,37,30,.48); font: italic 13px var(--serif); writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: .08em; }
+    .proof-strip { background: var(--paper); border-block: 1px solid rgba(56,37,30,.06); }
+    .proof-inner { min-height: 82px; display: flex; justify-content: space-between; align-items: center; gap: 22px; }
+    .rating { display: flex; align-items: center; gap: 12px; }
+    .stars { color: #bd8450; letter-spacing: .08em; font-size: 14px; white-space: nowrap; }
+    .rating strong { display: block; font-size: 14px; letter-spacing: .02em; }
+    .rating small, .proof-detail { color: var(--muted); font-size: 11px; }
+    .proof-detail { display: flex; align-items: center; gap: 9px; white-space: nowrap; }
+    .proof-detail .detail-dot { width: 4px; height: 4px; border-radius: 50%; background: #ad947e; }
+    .section { padding: 100px 0; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 36px; }
+    .section-heading h2, .about-copy h2, .visit-copy h2 { margin: 11px 0 0; font: 600 clamp(35px, 4.5vw, 54px)/1.08 var(--serif); letter-spacing: -.035em; }
+    .section-heading > p { max-width: 340px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .menu-section { background: linear-gradient(180deg, #f4eee4 0%, #eee6d9 100%); }
+
+    .menu-controls { display: grid; grid-template-columns: 1fr minmax(220px, 290px); align-items: start; gap: 14px 22px; margin: 0 0 25px; }
+    .menu-controls { display: grid; grid-template-columns: 1fr minmax(220px, 290px); align-items: start; gap: 14px 22px; margin: 0 0 25px; }
+    .menu-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .menu-filter-button { min-height: 37px; padding: 0 14px; border: 1px solid rgba(56,37,30,.15); border-radius: 999px; background: rgba(255,253,249,.55); color: #6e5b4e; font-size: 11px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: background .18s, color .18s, border-color .18s, transform .18s; }
+    .menu-filter-button:hover { border-color: var(--chocolate); transform: translateY(-1px); }
+    .menu-filter-button[aria-pressed="true"] { border-color: var(--espresso); background: var(--espresso); color: #fffaf2; }
+    .menu-search { display: flex; align-items: center; gap: 10px; min-height: 43px; padding: 0 14px; border: 1px solid rgba(56,37,30,.16); border-radius: 999px; background: var(--paper); color: var(--cocoa); }
+    .menu-search svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    .menu-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--espresso); font: 500 12px var(--sans); }
+    .menu-search input::placeholder { color: #92857a; }
+    .menu-search:focus-within { outline: 3px solid #ad794d; outline-offset: 3px; }
+    .menu-result-count { grid-column: 1 / -1; margin: -4px 0 0; color: var(--muted); font-size: 11px; }
+    .menu-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; }
+    .menu-group { position: relative; overflow: hidden; border: 1px solid rgba(56,37,30,.1); border-radius: 14px; background: var(--paper); box-shadow: 0 10px 30px rgba(58,38,28,.045); }
+    .menu-group::before { content: ""; position: absolute; top: 0; inset-inline: 0; height: 3px; background: linear-gradient(90deg, #a7724d, #d3b393 48%, #879075); }
+    .menu-group-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 21px 22px 15px; }
+    .menu-group-title { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .menu-group-index { display: grid; place-items: center; width: 37px; height: 37px; flex: 0 0 auto; border-radius: 50%; background: #eee5d8; color: var(--chocolate); font: 600 13px var(--serif); }
+    .menu-group-label { display: block; margin-bottom: 3px; color: var(--sage); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+    .menu-group h3 { margin: 0; font: 600 23px/1.2 var(--serif); letter-spacing: -.02em; }
+    .menu-group-count { flex: 0 0 auto; color: #918377; font-size: 10px; }
+    .menu-items { list-style: none; padding: 0 22px 8px; margin: 0; }
+    .menu-entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px; padding: 13px 0; border-top: 1px solid rgba(56,37,30,.09); }
+    .menu-entry-copy { min-width: 0; }
+    .menu-entry-name { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin: 0; font: 600 15px/1.35 var(--serif); }
+    .menu-description { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .menu-new-badge { display: inline-flex; align-items: center; min-height: 18px; padding: 0 7px; border-radius: 999px; background: #e9ede3; color: #646d50; font: 700 8px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; }
+    .menu-prices { display: flex; flex-wrap: wrap; justify-content: end; gap: 6px; direction: ltr; text-align: end; }
+    .menu-price-option { display: inline-flex; align-items: baseline; gap: 5px; white-space: nowrap; color: var(--chocolate); font-size: 12px; }
+    .menu-price-option strong { font-size: 13px; font-weight: 700; }
+    .menu-size { color: #8a796b; font-size: 9px; font-weight: 700; }
+    .menu-note { margin: 17px 0 0; color: #82766d; font-size: 10px; line-height: 1.5; }
+    .menu-empty { grid-column: 1 / -1; padding: 38px 20px; border: 1px dashed rgba(56,37,30,.22); border-radius: 14px; color: var(--muted); text-align: center; font-size: 13px; }
+    [dir="rtl"] .menu-group-label { letter-spacing: .04em; }
+    [dir="rtl"] .menu-group h3, [dir="rtl"] .menu-entry-name { font-family: "Cairo", sans-serif; letter-spacing: 0; }
+    [dir="rtl"] .menu-description, [dir="rtl"] .menu-search input, [dir="rtl"] .menu-group-count { font-family: "Cairo", sans-serif; }
+    @media (max-width: 700px) {
+
+      .menu-controls { grid-template-columns: 1fr; gap: 13px; }
+      .menu-filters { flex-wrap: nowrap; overflow-x: auto; padding: 2px 2px 7px; margin-inline: -2px; scrollbar-width: thin; }
+      .menu-filter-button { min-height: 35px; }
+      .menu-result-count { grid-column: auto; margin-top: -3px; }
+      .menu-groups { grid-template-columns: 1fr; gap: 13px; }
+      .menu-group-header { padding: 18px 17px 12px; }
+      .menu-group h3 { font-size: 21px; }
+      .menu-items { padding-inline: 17px; }
+      .menu-entry { gap: 8px; padding: 12px 0; }
+      .menu-entry-name { font-size: 15px; }
+      .menu-price-option { font-size: 11px; }
+      .menu-price-option strong { font-size: 12px; }
+    }    .about-section { background: #ebe4d8; overflow: hidden; }
+    .about-grid { display: grid; grid-template-columns: 1fr .92fr; align-items: center; gap: clamp(50px, 9vw, 120px); }
+    .about-visual { position: relative; min-height: 438px; }
+    .about-photo { position: absolute; inset: 0 34px 26px 0; overflow: hidden; border-radius: 14px 145px 14px 14px; background: #b79b7e; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-caption { position: absolute; inset-inline-end: 0; bottom: 0; width: 210px; padding: 17px 19px; border-radius: 8px; background: var(--espresso); color: #fff9f0; box-shadow: 0 16px 34px rgba(56,37,30,.16); }
+    .about-caption strong { display: block; margin-bottom: 4px; font: 500 22px var(--serif); }
+    .about-caption span { color: #d9c9b4; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .about-copy > p { max-width: 425px; color: #6d6259; font-size: 15px; line-height: 1.85; margin: 21px 0 24px; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--chocolate); text-decoration: none; font-size: 12px; font-weight: 700; }
+    .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .visit-section { padding-bottom: 105px; }
+    .visit-grid { display: block; }
+    .visit-copy { max-width: 760px; margin: 0 auto 35px; text-align: center; }
+    .visit-copy .eyebrow { justify-content: center; }
+    .visit-copy h2 { margin-bottom: 0; }
+    .locations-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 20px; }
+    .location-card { display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(56,37,30,.1); border-radius: 15px; background: var(--paper); box-shadow: var(--shadow); }
+    .location-card-info { flex: 1; padding: 23px 24px 21px; }
+    .location-card-kicker { display: block; color: var(--sage); font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .location-card-title { margin: 7px 0 17px; font: 600 25px/1.2 var(--serif); letter-spacing: -.02em; }
+    .location-address { padding-bottom: 15px; border-bottom: 1px solid rgba(56,37,30,.09); }
+    .location-address-label, .location-detail-label { display: block; color: var(--cocoa); font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .location-address p { margin: 6px 0 0; color: #55473e; font-size: 13px; line-height: 1.7; }
+    .location-card-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; padding-top: 14px; }
+    .location-detail-label { margin-bottom: 5px; }
+    .location-detail-value { display: block; color: #55473e; font-size: 12px; line-height: 1.55; text-decoration: none; }
+    .location-card-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 17px; }
+    .location-card-actions .button { min-height: 42px; padding-inline: 15px; font-size: 11px; }
+    .location-map { position: relative; min-height: 285px; overflow: hidden; border-top: 1px solid rgba(56,37,30,.09); background: #e9e1d4; }
+    .location-map iframe { display: block; width: 100%; height: 285px; border: 0; filter: saturate(.72) sepia(.12); }
+    .location-hours-note { margin: 16px 0 0; color: #82766d; font-size: 10px; line-height: 1.5; text-align: end; }
+    .map-pin { color: #9e6744; }
+    .map-pin svg { display: block; width: 18px; height: 18px; }
+    .map-label strong { display: block; font: 600 15px var(--serif); }
+    .map-label span { color: var(--muted); font-size: 10px; }
+    .footer { background: var(--espresso); color: #f8f0e4; padding: 33px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer .brand { color: #f8f0e4; }
+    .footer .brand-mark { color: var(--espresso); background: #f8f0e4; }
+    .footer-note { margin: 0; color: #d5c7b8; font-size: 11px; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #f8f0e4; font-size: 11px; text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .mobile-actions { display: none; }
+    [dir="rtl"] body { font-family: "Cairo", Arial, sans-serif; }
+    [dir="rtl"] .brand-name { letter-spacing: .08em; }
+    [dir="rtl"] .eyebrow { letter-spacing: .04em; }
+    [dir="rtl"] .menu-category { letter-spacing: .03em; }
+    [dir="rtl"] .visit-item h3 { letter-spacing: .03em; }
+    [dir="rtl"] .proof-detail { letter-spacing: 0; }
+    [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] .about-caption strong, [dir="rtl"] .map-label strong { font-family: "Cairo", sans-serif; letter-spacing: 0; }
+    [dir="rtl"] .hero-note { transform: none; }
+    @media (max-width: 960px) {
+      .nav { gap: 17px; }
+      .nav-links { gap: 17px; }
+      .nav-links a { font-size: 12px; }
+      .hero-grid { gap: 38px; }
+      .hero-visual { min-height: 420px; }
+    }
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 76px; }
+      .site-header { backdrop-filter: none; }
+      .container { width: min(100% - 36px, 520px); }
+      .announcement { font-size: 10px; letter-spacing: .035em; }
+      .announcement-inner { min-height: 31px; gap: 8px; }
+      .nav { min-height: 65px; gap: 10px; }
+      .brand-mark { width: 31px; height: 31px; font-size: 20px; }
+      .brand-name { font-size: 18px; }
+      .nav-links { position: fixed; bottom: 0; inset-inline: 0; z-index: 22; justify-content: space-around; gap: 0; padding: 0 14px env(safe-area-inset-bottom); height: 58px; background: rgba(255,253,249,.96); border-top: 1px solid var(--line); backdrop-filter: blur(14px); }
+      .nav-links a { font-size: 11px; }
+      .nav-actions { margin-inline-start: auto; gap: 8px; }
+      .language-toggle { height: 37px; }
+      .nav-call { padding: 11px 14px; font-size: 11px; }
+      .hero { padding: 48px 0 41px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 31px; }
+      .hero-copy { padding: 0; }
+      h1 { max-width: 490px; margin: 17px 0 12px; font-size: clamp(48px, 13vw, 66px); }
+      .hero-copy > p { max-width: 390px; margin-bottom: 21px; font-size: 14px; line-height: 1.7; }
+      .button { min-height: 45px; padding-inline: 15px; font-size: 11px; }
+      .hero-visual { min-height: min(103vw, 420px); width: calc(100% - 22px); margin-inline-start: 22px; }
+      .hero-photo-main { inset: 0 20px 13px 29px; border-radius: 140px 140px 12px 12px; }
+
+      .hero-stamp { inset-inline-end: -9px; bottom: 39px; padding: 9px 12px; font-size: 10px; }
+      .hero-note { top: 17px; inset-inline-start: -5px; font-size: 11px; }
+      .proof-inner { min-height: auto; padding-block: 17px; flex-wrap: wrap; justify-content: center; gap: 13px 20px; }
+      .rating { gap: 9px; }
+      .stars { font-size: 12px; }
+      .rating strong { font-size: 12px; }
+      .rating small { font-size: 10px; }
+      .proof-detail { font-size: 10px; }
+      .section { padding: 70px 0; }
+      .section-heading { display: block; margin-bottom: 26px; }
+      .section-heading h2, .about-copy h2, .visit-copy h2 { font-size: 41px; }
+      .section-heading > p { margin-top: 12px; font-size: 12px; }
+      .about-grid, .visit-grid { grid-template-columns: 1fr; gap: 34px; }
+      .about-section { padding-block: 68px; }
+      .about-visual { min-height: min(100vw, 405px); order: 2; }
+      .about-copy { order: 1; }
+      .about-photo { inset: 0 22px 21px 0; border-radius: 12px 120px 12px 12px; }
+      .about-caption { width: 185px; padding: 14px 16px; }
+      .about-copy > p { margin: 15px 0 17px; font-size: 13px; }
+
+
+
+      .visit-copy h2 { margin-bottom: 24px; }
+      .visit-item { margin-bottom: 20px; }
+      .visit-item p { font-size: 13px; }
+      .visit-actions { margin-top: 23px; }
+      .locations-grid { grid-template-columns: 1fr; gap: 16px; }
+      .location-card-info { padding: 20px; }
+      .location-card-title { font-size: 23px; }
+      .location-map, .location-map iframe { min-height: 275px; }
+      .location-map iframe { height: 275px; }
+      .footer { padding: 27px 0 78px; }
+      .footer-inner { flex-wrap: wrap; gap: 15px; }
+      .footer-note { order: 3; width: 100%; font-size: 10px; }
+      .footer-links { gap: 14px; }
+      .footer-links a { font-size: 10px; }
+    }
+    @media (max-width: 360px) {
+      .container { width: calc(100% - 28px); }
+      .nav-call { display: none; }
+      .button { padding-inline: 12px; font-size: 10px; }
+      .section-heading h2, .about-copy h2, .visit-copy h2 { font-size: 36px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement" aria-label="CUPA location and service">
+    <div class="container announcement-inner">
+      <span data-i18n="announcementLocation">Korba, Heliopolis · Cairo</span><span class="dot" aria-hidden="true"></span>
+      <span data-i18n="announcementServices">Dine in · Takeaway</span>
+    </div>
+  </div>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="CUPA home"><span class="brand-mark" aria-hidden="true">C</span><span class="brand-name">CUPA</span></a>
+      <div class="nav-links">
+        <a href="#menu" data-i18n="navMenu">Menu</a>
+        <a href="#about" data-i18n="navAbout">Our story</a>
+        <a href="#visit" data-i18n="navVisit">Visit us</a>
+      </div>
+      <div class="nav-actions">
+        <button class="language-toggle" type="button" aria-label="Switch language to Arabic" lang="ar">عربي</button>
+        <a class="nav-call" href="tel:+201206983069" data-i18n="callUs">Call us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-i18n="heroEyebrow">Coffee, cake & a little pause</span>
+          <h1 data-i18n="heroTitle">Make room for a little something lovely.</h1>
+          <p data-i18n="heroText">Your neighborhood coffee-and-cake spot in Korba. Come in, settle down, and enjoy the moment.</p>
+          <div class="button-row">
+            <a class="button button-dark" href="#menu"><span data-i18n="viewMenu">View the Menu</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3.5 10h12m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="button button-outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Al+Somal%2C+El-Montaza%2C+Heliopolis%2C+Cairo+Governorate+4460244" target="_blank" rel="noopener" data-i18n="directions">Get Directions</a>
+            <a class="button button-outline" href="tel:+201206983069" data-i18n="call">Call</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Coffee and cake at CUPA">
+          <span class="hero-note" data-i18n="heroNote">A cozy corner in Korba</span>
+          <div class="hero-photo hero-photo-main"><img src="site-images/cupa-storefront.jpg" alt="CUPA storefront and café interior at night" fetchpriority="high" decoding="async"></div>
+
+          <div class="hero-stamp"><span class="stamp-mark" aria-hidden="true">C</span><span data-i18n="stampText">Coffee · Cake · Korba</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="CUPA details">
+      <div class="container proof-inner">
+        <a class="rating" href="https://www.google.com/maps/search/?api=1&amp;query=CUPA+Korba+Heliopolis+Cairo+reviews" target="_blank" rel="noopener" aria-label="4.8 out of 5 stars from 585 reviews. View reviews on Google Maps">
+          <span class="stars" aria-hidden="true">★★★★★</span><span><strong>4.8 ★ · 585 <span data-i18n="reviews">reviews</span></strong><small data-i18n="listingInfo">From the supplied listing</small></span>
+        </a>
+        <span class="proof-detail"><span class="detail-dot" aria-hidden="true"></span><span data-i18n="dineIn">Dine-in</span></span>
+        <span class="proof-detail"><span class="detail-dot" aria-hidden="true"></span><span data-i18n="takeaway">Takeaway</span></span>
+        <a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=CUPA+Korba+Heliopolis+Cairo+reviews" target="_blank" rel="noopener"><span data-i18n="viewReviews">View reviews</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </section>
+
+    <section class="section menu-section" id="menu">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow" data-i18n="menuEyebrow">The CUPA menu</span><h2 data-i18n="menuTitle">Something lovely<br>for every kind of day.</h2></div>
+          <p data-i18n="menuIntro">From fresh bakes and rich cake to coffee, matcha and something chilled. Browse the menu and find your new favorite.</p>
+        </div>
+
+        <div class="menu-controls">
+          <div class="menu-filters" id="menuFilters" role="toolbar" aria-label="Filter menu categories"></div>
+          <label class="menu-search" for="menuSearch">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.7" cy="8.7" r="5.8" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <input id="menuSearch" type="search" autocomplete="off" placeholder="Search the menu" aria-label="Search the menu">
+          </label>
+          <p class="menu-result-count" id="menuResultCount" aria-live="polite"></p>
+        </div>
+        <div class="menu-groups" id="menuGroups" aria-live="polite"></div>
+        <p class="menu-note" data-i18n="menuNote">Prices are shown in L.E. Sizes are marked where available.</p>
+      </div>
+    </section>
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div class="about-photo"><img src="site-images/cupa-korba.jpg" alt="CUPA outdoor seating and counter beneath string lights at night" loading="lazy" decoding="async"></div>
+          <div class="about-caption"><strong data-i18n="aboutCaption">A place to pause</strong><span data-i18n="aboutLocation">Korba · Heliopolis</span></div>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow" data-i18n="aboutEyebrow">A neighborhood kind of place</span>
+          <h2 data-i18n="aboutTitle">Your coffee-and-cake corner in Korba.</h2>
+          <p data-i18n="aboutText">CUPA is a neighborhood coffee-and-cake spot in Korba, Heliopolis. Drop by for dine-in or takeaway, and make yourself at home.</p>
+          <a class="text-link" href="#visit"><span data-i18n="findUs">Come find us</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section visit-section" id="visit">
+      <div class="container visit-grid">
+        <div class="visit-copy">
+          <span class="eyebrow" data-i18n="visitEyebrow">Our locations</span>
+          <h2 data-i18n="visitTitle">Find us in<br>Korba &amp; Nasr City.</h2>
+        </div>
+        <div class="locations-grid">
+          <article class="location-card" aria-labelledby="korbaLocationTitle">
+            <div class="location-card-info">
+              <span class="location-card-kicker" data-i18n="korbaBranchLabel">CUPA · Korba branch</span>
+              <h3 class="location-card-title" id="korbaLocationTitle" data-i18n="mapLocation">Korba, Heliopolis</h3>
+              <div class="location-address"><span class="location-address-label" data-i18n="addressLabel">Address</span><p data-i18n="address">5 Al Somal, El-Montaza,<br>Heliopolis, Cairo Governorate 4460244</p></div>
+              <div class="location-card-details">
+                <div><span class="location-detail-label" data-i18n="hoursLabel">Hours from the listing</span><span class="location-detail-value" data-i18n="hoursValue">Open · Closes 1 AM</span></div>
+                <div><span class="location-detail-label" data-i18n="contactLabel">Call us</span><a class="location-detail-value" href="tel:+201206983069" dir="ltr">012 06983069</a></div>
+              </div>
+              <div class="location-card-actions"><a class="button button-dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Al+Somal%2C+El-Montaza%2C+Heliopolis%2C+Cairo+Governorate+4460244" target="_blank" rel="noopener noreferrer"><span data-i18n="directions">Get Directions</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m3 9 13-6-6 14-2.2-5.7L3 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="button button-outline" href="https://www.talabat.com/egypt/restaurant/760794/cupa-heliopolis--baron?aid=7656" target="_blank" rel="noopener noreferrer" data-i18n="orderOnTalabat">Order on Talabat</a></div>
+            </div>
+            <div class="location-map">
+              <iframe title="Map to CUPA in Korba, Heliopolis" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=5%20Al%20Somal%2C%20El-Montaza%2C%20Heliopolis%2C%20Cairo%20Governorate%204460244&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+              <div class="map-label"><span class="map-pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M19 10.2c0 5-7 10-7 10s-7-5-7-10a7 7 0 1 1 14 0Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></svg></span><span><strong>CUPA</strong><span data-i18n="mapLocation">Korba, Heliopolis</span></span></div>
+            </div>
+          </article>
+          <article class="location-card" aria-labelledby="gardenLocationTitle">
+            <div class="location-card-info">
+              <span class="location-card-kicker" data-i18n="gardenBranchEyebrow">CUPA · Nasr City branch</span>
+              <h3 class="location-card-title" id="gardenLocationTitle" data-i18n="gardenBranchTitle">The Garden</h3>
+              <div class="location-address"><span class="location-address-label" data-i18n="addressLabel">Address</span><p data-i18n="gardenAddress">The Garden, Al Hadiqah Ad Dawleyah,<br>Nasr City, Cairo Governorate 4441455</p></div>
+              <div class="location-card-details">
+                <div><span class="location-detail-label" data-i18n="hoursLabel">Hours from the listing</span><span class="location-detail-value" data-i18n="hoursValue">Open · Closes 1 AM</span></div>
+                <div><span class="location-detail-label" data-i18n="contactLabel">Call us</span><a class="location-detail-value" href="tel:+201206983069" dir="ltr">012 06983069</a></div>
+              </div>
+              <div class="location-card-actions"><a class="button button-dark" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Garden%2C+Al+Hadiqah+Ad+Dawleyah%2C+Nasr+City%2C+Cairo+Governorate+4441455" target="_blank" rel="noopener"><span data-i18n="directions">Get Directions</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m3 9 13-6-6 14-2.2-5.7L3 9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+            </div>
+            <div class="location-map">
+              <iframe title="Map to CUPA at The Garden, Nasr City" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=The%20Garden%2C%20Al%20Hadiqah%20Ad%20Dawleyah%2C%20Nasr%20City%2C%20Cairo%20Governorate%204441455&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
+              <div class="map-label"><span class="map-pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M19 10.2c0 5-7 10-7 10s-7-5-7-10a7 7 0 1 1 14 0Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></svg></span><span><strong>CUPA</strong><span data-i18n="gardenMapLocation">The Garden · Nasr City</span></span></div>
+            </div>
+          </article>
+        </div>
+        <p class="location-hours-note" data-i18n="hoursNote">Listing information can change. Please call to confirm today’s hours.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#home" aria-label="CUPA home"><span class="brand-mark" aria-hidden="true">C</span><span class="brand-name">CUPA</span></a>
+      <p class="footer-note" data-i18n="footerNote">Coffee, cake & a warm welcome in Korba.</p>
+      <div class="footer-links"><a href="tel:+201206983069" data-i18n="call">Call</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=5+Al+Somal%2C+El-Montaza%2C+Heliopolis%2C+Cairo+Governorate+4460244" target="_blank" rel="noopener" data-i18n="directions">Get Directions</a><a href="https://www.instagram.com/cupa.egypt/" target="_blank" rel="noopener noreferrer" aria-label="CUPA on Instagram">Instagram</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const item = (en, ar, price, newArrival = false) => ({ name: { en, ar }, price, newArrival });
+    const sizes = (en, ar, medium, large) => ({ name: { en, ar }, sizes: [["M", medium], ["L", large]] });
+    const described = (en, ar, price, descriptionEn, descriptionAr, newArrival = false) => ({
+      name: { en, ar }, price, description: { en: descriptionEn, ar: descriptionAr }, newArrival
+    });
+
+    const MENU_GROUPS = [
+      { id: "bakery", title: { en: "Bakeries", ar: "مخبوزات" }, items: [
+        item("Almond croissant", "كرواسون باللوز", 110),
+        described("Plain croissant", "كرواسون سادة", 80, "A buttery, flaky pastry with a light, crisp texture.", "معجنات غنية بالزبدة، هشة وخفيفة بقوام مقرمش."),
+        item("Suisse Pain", "سويس بان", 100), item("Danish", "معجنات دانش", 130),
+        item("Turkey croissant", "كرواسون بالتركي", 120), item("Pistachio croissant", "كرواسون بالفستق", 110)
+      ]},
+      { id: "sandwiches", title: { en: "Sandwiches", ar: "ساندويتشات" }, items: [
+        described("Turkey & cheese croissant", "كرواسون بالتركي والجبنة", 110, "A flaky, buttery croissant filled with savory turkey and melted cheese.", "كرواسون هش وغني بالزبدة، محشو بالتركي والجبنة الذائبة.")
+      ]},
+      { id: "beans", title: { en: "Coffee beans", ar: "حبوب القهوة" }, items: [
+        described("Coffee beans", "حبوب القهوة", 350, "250 grams of our house blend coffee beans.", "٢٥٠ جرامًا من مزيج حبوب القهوة الخاص بنا."),
+        described("Rwanda beans", "حبوب رواندا", 650, "Speciality coffee beans.", "حبوب قهوة مختصة.")
+      ]},
+      { id: "desserts", title: { en: "Desserts", ar: "حلويات" }, items: [
+        item("Cookie selection", "تشكيلة كوكيز", 90), item("Pistachio cookies", "كوكيز بالفستق", 90),
+        item("Coffee cookies", "كوكيز بالقهوة", 90), item("Triple chocolate cookies", "كوكيز بثلاثة أنواع من الشوكولاتة", 90),
+        item("Red velvet cookies", "كوكيز ريد فيلفيت", 90), item("Red velvet cake", "كيكة ريد فيلفيت", 120),
+        described("Fudge", "فادج", 120, "A rich, creamy confection with a smooth, melt-in-your-mouth texture.", "حلوى غنية وكريمية بقوام ناعم يذوب في الفم."),
+        described("Blueberry cheesecake", "تشيز كيك بالتوت الأزرق", 140, "A smooth cheesecake topped with fresh, sweet blueberries.", "تشيز كيك ناعمة تعلوها حبات التوت الأزرق الطازجة والحلوة."),
+        described("Tiramisu", "تيراميسو", 140, "A light dessert layered with coffee-soaked cake, mascarpone cream and cocoa.", "حلوى خفيفة بطبقات من الكيك المنقوع بالقهوة وكريمة الماسكاربوني والكاكاو."),
+        item("Creamy bubble", "كريمي بابل", 150), item("Honey cake", "كيكة العسل", 120)
+      ]},
+      { id: "hot-coffee", title: { en: "Hot coffee", ar: "قهوة ساخنة" }, items: [
+        described("Espresso", "إسبريسو", 70, "A concentrated coffee with a strong flavor and golden crema.", "قهوة مركزة بنكهة قوية وطبقة كريما ذهبية."),
+        sizes("Macchiato", "ماكياتو", 80, 85),
+        described("Cortado", "كورتادو", 85, "An espresso-based drink with equal parts espresso and steamed milk.", "مشروب أساسه الإسبريسو مع كميات متساوية من الإسبريسو والحليب المبخر."),
+        item("Americano", "أمريكانو", 90), item("Flat white", "فلات وايت", 95),
+        sizes("Cappuccino", "كابتشينو", 105, 120), sizes("Caramel macchiato", "ماكياتو بالكراميل", 120, 140),
+        sizes("Spanish latte", "سبانيش لاتيه", 120, 140), sizes("Mocha", "موكا", 120, 130),
+        sizes("White mocha", "وايت موكا", 120, 130), sizes("Latte", "لاتيه", 105, 120),
+        item("Cloud latte", "كلاود لاتيه", 139, true), item("Flavor V60", "في ٦٠ بالنكهة", 200)
+      ]},
+      { id: "cold-coffee", title: { en: "Cold coffee", ar: "قهوة باردة" }, items: [
+        sizes("Iced Americano", "آيس أمريكانو", 85, 95), sizes("Iced latte", "آيس لاتيه", 100, 110),
+        sizes("Iced mocha", "آيس موكا", 115, 130), sizes("Iced Spanish latte", "آيس سبانيش لاتيه", 115, 140),
+        item("Coco latte", "كوكو لاتيه", 150), sizes("Iced white mocha", "آيس وايت موكا", 115, 130),
+        sizes("Ice vanilla shaken", "آيس فانيليا شيكن", 115, 140), sizes("Iced caramel macchiato", "آيس ماكياتو بالكراميل", 115, 130),
+        item("Strawberry Freoo", "فريو بالفراولة", 130), item("Cloud ice latte", "كلاود آيس لاتيه", 140, true),
+        item("Iced V60", "في ٦٠ مثلج", 200)
+      ]},
+      { id: "frappes", title: { en: "Frappes", ar: "فرابيه" }, items: [
+        item("Mocha frappé", "فرابيه موكا", 144), item("Caramel frappé", "فرابيه كراميل", 144),
+        item("Spanish frappé", "فرابيه سبانيش", 144), item("White mocha frappé", "فرابيه وايت موكا", 144),
+        item("Coffee frappé", "فرابيه قهوة", 144), item("Cloud frappe", "كلاود فرابيه", 149, true)
+      ]},
+      { id: "matcha", title: { en: "Matcha", ar: "ماتشا" }, items: [
+        item("Matcha tea", "شاي ماتشا", 80), item("Iced matcha latte", "آيس ماتشا لاتيه", 120),
+        item("Matcha latte", "ماتشا لاتيه", 120), item("Matcha frappe", "فرابيه ماتشا", 125),
+        item("Mango matcha frappe", "فرابيه ماتشا بالمانجو", 135), item("Matcha peach frappe", "فرابيه ماتشا بالخوخ", 140),
+        item("Strawberry matcha frappe", "فرابيه ماتشا بالفراولة", 135, true), item("Matcha cloud", "ماتشا كلاود", 149, true)
+      ]},
+      { id: "juice", title: { en: "Fresh juice", ar: "عصائر طازجة" }, items: [
+        item("Orange juice", "عصير برتقال", 80), item("Strawberry juice", "عصير فراولة", 80),
+        item("Mango juice", "عصير مانجو", 90), item("Lemon mint smoothie", "سموذي ليمون ونعناع", 110),
+        item("Avocado", "أفوكادو", 110), item("Florida", "فلوريدا", 130)
+      ]},
+      { id: "non-coffee", title: { en: "Non-coffee", ar: "مشروبات بدون قهوة" }, items: [
+        item("Black tea", "شاي أسود", 50), item("Green tea", "شاي أخضر", 50), item("Anise", "يانسون", 50),
+        item("Peach iced tea", "شاي مثلج بالخوخ", 100), item("Hot chocolate", "شوكولاتة ساخنة", 150)
+      ]},
+      { id: "milkshakes", title: { en: "Milkshakes", ar: "ميلك شيك" }, items: [
+        item("Strawberry milkshake", "ميلك شيك بالفراولة", 130), item("Vanilla milkshake", "ميلك شيك بالفانيليا", 130),
+        item("Chocolate milkshake", "ميلك شيك بالشوكولاتة", 130), item("Caramel milkshake", "ميلك شيك بالكراميل", 130),
+        item("Blueberry milkshake", "ميلك شيك بالتوت الأزرق", 130, true)
+      ]},
+      { id: "mojito", title: { en: "Mojito & coolers", ar: "موهيتو ومشروبات منعشة" }, items: [
+        item("Red Bull mojito", "موهيتو ريد بول", 120), item("Passion fruit mojito", "موهيتو فاكهة العاطفة", 140),
+        item("Blue ocean mojito", "موهيتو بلو أوشن", 140), item("Strawberry mojito", "موهيتو بالفراولة", 140),
+        item("Blueberry mojito", "موهيتو بالتوت الأزرق", 140), described("Viski", "فيسكي", 150, "Red Bull with secret syrup. No alcohol.", "ريد بول مع شراب سري. بدون كحول.")
+      ]},
+      { id: "soft-drinks", title: { en: "Soft drinks", ar: "مشروبات غازية ومياه" }, items: [
+        item("Ice cup", "كوب ثلج", 5), item("Puvana water", "مياه بوفانا", 20),
+        item("Red Bull", "ريد بول", 120), item("Coconut water", "ماء جوز الهند", 100)
+      ]}
+    ];
+    const COPY = {
+      en: {
+        // Edit hoursValue below to update the listing-hours note shown on the site.
+        announcementLocation: "Korba, Heliopolis · Nasr City, Cairo", announcementServices: "Dine in · Takeaway",
+        navMenu: "Menu", navAbout: "Our story", navVisit: "Visit us", callUs: "Call us", orderOnTalabat: "Order on Talabat",
+        heroEyebrow: "Coffee, cake & a little pause", heroTitle: "Make room for a little something lovely.", heroText: "Your neighborhood coffee-and-cake spot in Korba. Come in, settle down, and enjoy the moment.",
+        viewMenu: "View the Menu", directions: "Get Directions", call: "Call", heroNote: "A cozy corner in Korba", stampText: "Coffee · Cake · Korba",
+        reviews: "reviews", listingInfo: "From the supplied listing", dineIn: "Dine-in", takeaway: "Takeaway", viewReviews: "View reviews",
+        menuEyebrow: "The CUPA menu", menuTitle: "Something lovely<br>for every kind of day.", menuIntro: "From fresh bakes and rich cake to coffee, matcha and something chilled. Browse the menu and find your new favorite.",
+        aboutCaption: "A place to pause", aboutLocation: "Korba · Heliopolis", aboutEyebrow: "A neighborhood kind of place", aboutTitle: "Your coffee-and-cake corner in Korba.", aboutText: "CUPA is a neighborhood coffee-and-cake spot in Korba, Heliopolis. Drop by for dine-in or takeaway, and make yourself at home.", findUs: "Come find us",
+        visitEyebrow: "Our locations", visitTitle: "Find us in<br>Korba & Nasr City.", korbaBranchLabel: "CUPA · Korba branch", gardenBranchEyebrow: "CUPA · Nasr City branch", gardenBranchTitle: "The Garden", gardenAddress: "The Garden, Al Hadiqah Ad Dawleyah,<br>Nasr City, Cairo Governorate 4441455", addressLabel: "Address", address: "5 Al Somal, El-Montaza,<br>Heliopolis, Cairo Governorate 4460244", contactLabel: "Call us", hoursLabel: "Hours from the listing", hoursValue: "Open · Closes 1 AM", hoursNote: "Listing information can change. Please call to confirm today’s hours.", mapLocation: "Korba, Heliopolis", gardenMapLocation: "The Garden · Nasr City", footerNote: "Coffee, cake & a warm welcome across Cairo.",
+        bakery: "Bakery", cake: "Cake", coffee: "Coffee", allItems: "All", menuItemsLabel: "items", menuSectionLabel: "Menu section", newLabel: "New", menuSearchPlaceholder: "Search the menu", menuSearchLabel: "Search the menu", showingItems: "Showing {count} items", noMenuResults: "No menu items match that search.", menuCategoryLabel: "Menu categories", menuNote: "Prices are shown in L.E. Sizes are marked where available.", switchLabel: "Switch language to Arabic", menuDescriptionLabel: "Description", menuPriceLabel: "Price"
+      },
+      ar: {
+        announcementLocation: "الكوربة، مصر الجديدة · مدينة نصر، القاهرة", announcementServices: "تناول في المكان · سفري",
+        navMenu: "القائمة", navAbout: "عن CUPA", navVisit: "زورونا", callUs: "اتصل بنا", orderOnTalabat: "اطلبوا عبر طلبات",
+        heroEyebrow: "قهوة وكيك واستراحة لطيفة", heroTitle: "اترك مساحة لشيء جميل.", heroText: "مكانكم في الكوربة، مصر الجديدة للقهوة والكيك. تفضلوا، واسترخوا واستمتعوا باللحظة.",
+        viewMenu: "شاهدوا القائمة", directions: "احصل على الاتجاهات", call: "اتصال", heroNote: "ركن دافئ في الكوربة", stampText: "قهوة · كيك · الكوربة",
+        reviews: "تقييمًا", listingInfo: "بحسب بيانات المكان", dineIn: "تناول في المكان", takeaway: "سفري", viewReviews: "شاهدوا التقييمات",
+        menuEyebrow: "قائمة CUPA", menuTitle: "شيء لذيذ<br>لكل يوم ومزاج.", menuIntro: "من المخبوزات الطازجة والكيك إلى القهوة والماتشا والمشروبات المنعشة. تصفحوا القائمة واكتشفوا اختياركم الجديد.",
+        aboutCaption: "مكان للاستراحة", aboutLocation: "الكوربة · مصر الجديدة", aboutEyebrow: "مكان من قلب الحي", aboutTitle: "ركنكم للقهوة والكيك في الكوربة.", aboutText: "CUPA مكان للقهوة والكيك من قلب حي الكوربة في مصر الجديدة. زورونا لتناول طلبكم في المكان أو أخذه سفريًا، واستمتعوا بوقتكم.", findUs: "زورونا",
+        visitEyebrow: "فروع CUPA", visitTitle: "زورونا في<br>الكوربة ومدينة نصر.", korbaBranchLabel: "CUPA · فرع الكوربة", gardenBranchEyebrow: "CUPA · فرع مدينة نصر", gardenBranchTitle: "ذا جاردن", gardenAddress: "ذا جاردن، الحديقة الدولية، مدينة نصر، محافظة القاهرة 4441455", addressLabel: "العنوان", address: "٥ شارع الصومال، المنتزه،<br>مصر الجديدة، محافظة القاهرة 4460244", contactLabel: "اتصلوا بنا", hoursLabel: "مواعيد العمل بحسب القائمة", hoursValue: "مفتوح · يُغلق ١ صباحًا", hoursNote: "قد تتغير المعلومات المدرجة. يرجى الاتصال للتأكد من مواعيد اليوم.", mapLocation: "الكوربة، مصر الجديدة", gardenMapLocation: "ذا جاردن · مدينة نصر", footerNote: "قهوة وكيك وترحيب دافئ في القاهرة.",
+        bakery: "مخبوزات", cake: "كيك", coffee: "قهوة", allItems: "الكل", menuItemsLabel: "اختيارات", menuSectionLabel: "قسم القائمة", newLabel: "جديد", menuSearchPlaceholder: "ابحثوا في القائمة", menuSearchLabel: "ابحثوا في القائمة", showingItems: "عرض {count} من الاختيارات", noMenuResults: "لا توجد اختيارات تطابق البحث.", menuCategoryLabel: "أقسام القائمة", menuNote: "الأسعار بالجنيه المصري. الأحجام موضحة عند توفرها.", switchLabel: "التغيير إلى الإنجليزية", menuDescriptionLabel: "الوصف", menuPriceLabel: "السعر"
+      }
+    };
+
+    let language = "en";
+    const html = document.documentElement;
+    const menuGroups = document.getElementById("menuGroups");
+    const menuFilters = document.getElementById("menuFilters");
+    const menuSearch = document.getElementById("menuSearch");
+    const menuResultCount = document.getElementById("menuResultCount");
+    let activeCategory = "all";
+    let menuQuery = "";
+
+    function localized(value) {
+      if (typeof value === "string") return value;
+      return value?.[language] || value?.en || "";
+    }
+
+    function formatPrice(amount) {
+      const formatted = language === "ar" ? new Intl.NumberFormat("ar-EG", { maximumFractionDigits: 0 }).format(amount) : String(amount);
+      return formatted + " " + (language === "ar" ? "ج.م." : "L.E");
+    }
+
+    function renderFilters() {
+      const allButton = '<button class="menu-filter-button" type="button" data-filter="all" aria-pressed="' + (activeCategory === "all") + '">' + COPY[language].allItems + '</button>';
+      const categoryButtons = MENU_GROUPS.map((group) =>
+        '<button class="menu-filter-button" type="button" data-filter="' + group.id + '" aria-pressed="' + (activeCategory === group.id) + '">' + group.title[language] + '</button>'
+      ).join("");
+      menuFilters.innerHTML = allButton + categoryButtons;
+      menuFilters.setAttribute("aria-label", COPY[language].menuCategoryLabel);
+    }
+
+    function renderMenuGroups() {
+      let visibleCount = 0;
+      const query = menuQuery.trim().toLocaleLowerCase();
+      const markup = MENU_GROUPS.map((group, groupIndex) => {
+        if (activeCategory !== "all" && activeCategory !== group.id) return "";
+        const matches = group.items.filter((product) => {
+          const searchable = [localized(product.name), localized(product.description), group.title[language]].join(" ").toLocaleLowerCase();
+          return !query || searchable.includes(query);
+        });
+        if (!matches.length) return "";
+        visibleCount += matches.length;
+        const rows = matches.map((product) => {
+          const name = localized(product.name);
+          const description = localized(product.description);
+          const badge = product.newArrival ? '<span class="menu-new-badge">' + COPY[language].newLabel + '</span>' : "";
+          const prices = product.sizes
+            ? product.sizes.map(([size, amount]) => '<span class="menu-price-option"><span class="menu-size">' + size + '</span><strong>' + formatPrice(amount) + '</strong></span>').join("")
+            : '<span class="menu-price-option"><strong>' + formatPrice(product.price) + '</strong></span>';
+          return '<li class="menu-entry"><div class="menu-entry-copy"><h4 class="menu-entry-name" dir="auto">' + name + badge + '</h4>' + (description ? '<p class="menu-description" dir="auto">' + description + '</p>' : '') + '</div><div class="menu-prices">' + prices + '</div></li>';
+        }).join("");
+        const index = String(groupIndex + 1).padStart(2, "0");
+        return '<section class="menu-group" aria-labelledby="menu-' + group.id + '"><header class="menu-group-header"><div class="menu-group-title"><span class="menu-group-index" aria-hidden="true">' + index + '</span><div><span class="menu-group-label">' + COPY[language].menuSectionLabel + '</span><h3 id="menu-' + group.id + '">' + group.title[language] + '</h3></div></div><span class="menu-group-count">' + matches.length + ' ' + COPY[language].menuItemsLabel + '</span></header><ul class="menu-items">' + rows + '</ul></section>';
+      }).join("");
+      menuGroups.innerHTML = markup || '<p class="menu-empty">' + COPY[language].noMenuResults + '</p>';
+      menuResultCount.textContent = COPY[language].showingItems.replace("{count}", visibleCount);
+    }
+    function setLanguage(nextLanguage) {
+      language = nextLanguage;
+      html.lang = language;
+      html.dir = language === "ar" ? "rtl" : "ltr";
+      document.title = language === "ar" ? "CUPA — قهوة وكيك في الكوربة" : "CUPA — Coffee & Cake in Korba";
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.dataset.i18n;
+        if (COPY[language][key] !== undefined) element.innerHTML = COPY[language][key];
+      });
+      const toggle = document.querySelector(".language-toggle");
+      toggle.textContent = language === "en" ? "عربي" : "EN";
+      toggle.lang = language === "en" ? "ar" : "en";
+      toggle.setAttribute("aria-label", COPY[language].switchLabel);
+      menuSearch.placeholder = COPY[language].menuSearchPlaceholder;
+      menuSearch.setAttribute("aria-label", COPY[language].menuSearchLabel);
++
+      renderFilters();
+      renderMenuGroups();
+    }
+
+    document.querySelector(".language-toggle").addEventListener("click", () => setLanguage(language === "en" ? "ar" : "en"));
+    menuFilters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-filter]");
+      if (!button) return;
+      activeCategory = button.dataset.filter;
+      menuFilters.querySelectorAll("[data-filter]").forEach((filter) => filter.setAttribute("aria-pressed", String(filter.dataset.filter === activeCategory)));
+      renderMenuGroups();
+    });
+
+    menuSearch.addEventListener("input", () => {
+      menuQuery = menuSearch.value;
+      renderMenuGroups();
+    });
+    renderFilters();
+    renderMenuGroups();
+  </script>
+</body>
+</html>
+
+
